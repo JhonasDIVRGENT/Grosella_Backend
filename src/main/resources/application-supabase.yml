@@ -5,8 +5,8 @@
 # =====================================================================
 spring:
   datasource:
-    url: ${DB_URL:jdbc:postgresql://aws-0-sa-east-1.pooler.supabase.com:5432/postgres?sslmode=require}
-    username: ${DB_USERNAME:postgres.xxxxxxxxxxxx}
-    password: ${DB_PASSWORD:}
+    url: ${DB_URL:jdbc:postgresql://aws-0-us-west-2.pooler.supabase.com:5432/postgres?sslmode=require}
+    username: ${DB_USERNAME:postgres.hhcbuoqpkfirpgzvkkyd}
+    password: ${DB_PASSWORD:grosella-pedidos}
     hikari:
       maximum-pool-size: 5

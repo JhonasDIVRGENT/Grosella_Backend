@@ -1,0 +1,12 @@
+# =====================================================================
+# Perfil para la etapa 2 (base de datos en Supabase).
+# Activar con: SPRING_PROFILES_ACTIVE=supabase
+# Datos de conexión: Supabase > Project Settings > Database > Connection string (JDBC)
+# =====================================================================
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://aws-0-sa-east-1.pooler.supabase.com:5432/postgres?sslmode=require}
+    username: ${DB_USERNAME:postgres.xxxxxxxxxxxx}
+    password: ${DB_PASSWORD:}
+    hikari:
+      maximum-pool-size: 5

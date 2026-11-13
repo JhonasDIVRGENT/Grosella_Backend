@@ -1,0 +1,31 @@
+# =====================================================================
+# Pastelería Grosella - API de Gestión de Pedidos (V01)
+# Los valores se pueden cambiar con variables de entorno sin tocar el código.
+# =====================================================================
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: gestion-pedidos
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/grosella_pedidos}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+  jpa:
+    # La estructura de la BD la crean los scripts de la carpeta BaseDatos
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: America/Lima
+
+app:
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:4200}
+  sesion:
+    duracion-horas: 8

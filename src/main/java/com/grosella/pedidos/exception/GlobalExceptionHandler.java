@@ -11,6 +11,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
@@ -64,6 +65,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> integridad(DataIntegrityViolationException ex) {
         log.warn("Violación de integridad: {}", ex.getMostSpecificCause().getMessage());
         return respuesta(HttpStatus.CONFLICT, "La operación no cumple las reglas de integridad de los datos.", null);
+    }
+
+    /** Rutas que no existen (por ejemplo "/" o favicon.ico): 404 sin imprimir la traza completa. */
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ErrorResponse> rutaNoExiste(NoResourceFoundException ex) {
+        return respuesta(HttpStatus.NOT_FOUND, "Recurso no encontrado.", null);
     }
 
     @ExceptionHandler(Exception.class)
